@@ -7,9 +7,9 @@ Gem::Specification.new do |gem|
   gem.name          = "aka"
   gem.version       = Aka::VERSION
   gem.authors       = ["Nate Dickson"]
-  gem.email         = ["natedickson@ldschurch.org"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.email         = ["nate@natedickson.com"]
+  gem.description   = %q{Manage your aliases with style}
+  gem.summary       = %q{Manages your list of aliases from an easy and friendly command line interface.}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)

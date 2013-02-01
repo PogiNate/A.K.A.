@@ -1,0 +1,46 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'methadone'
+require 'aka'
+require 'fileutils'
+
+class App
+  include Methadone::Main
+  include Methadone::CLILogging
+  include Aka
+
+  main do # Add args you want: |like,so|
+    al = AliasList.new
+    al.backup if options[:backup]
+    al.list   if options[:list]
+    al.show(options[:show][:STRING]) if options[:show]
+    
+    if options[:delete]
+      al.empty
+    elsif options[:add]
+      al.add(options[:ALIAS],options[:VALUE])
+    elsif options[:remove]
+      al.remove(options[:ALIAS])
+    end
+  end
+
+  # supplemental methods here
+
+  # Declare command-line interface here
+
+  description "Manage your aliases without editing dot files."
+
+  on("-a ALIAS VALUE","--add", "Add a new alias")
+  on("-l", "--list","List all current aliases")
+  on("-r ALIAS", "--remove", "Remove the specified alias")
+  on("-s ALIAS", "--show", "Show what the specified alias does")
+  on("-b","--backup","Create a backup copy of your alias")
+  on("-d","--delete","Delete all keys from your alias file")
+
+  version Aka::VERSION
+
+  use_log_level_option
+
+  go!
+end

@@ -1,6 +1,6 @@
 # Aka
 
-TODO: Write a gem description
+AKA is an alias manager. keep tabs on all of your alias'ed commands, shortcuts, and more without hand-editing dot files.
 
 ## Installation
 
@@ -22,8 +22,4 @@ TODO: Write usage instructions here
 
 ## Contributing
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+I am certainly **not** suggesting that this is a perfect app. It's basically something that works for me and I kind of like it. Pull requests are definitely welcome, as are any issues, with our without proposed fixes.
