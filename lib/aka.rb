@@ -21,6 +21,7 @@ module Aka
     end
 
     def add string, command
+        debug "string: #{string} command: #{command}"
         #add a new alias to the list
         @aliases[string] = command
         writeOut
@@ -33,7 +34,6 @@ module Aka
     end 
 
     def list
-        debug("made it to the list method.")
         #return the list of aliases.
         keyList = ""
         @aliases.keys.each{|key| keyList = keyList+" #{key}" }

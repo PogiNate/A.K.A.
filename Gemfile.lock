@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    aka (0.2.1)
+    aka (0.4.5)
       methadone (~> 1.2.4)
 
 GEM

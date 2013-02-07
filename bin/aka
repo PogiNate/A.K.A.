@@ -17,13 +17,26 @@ class App
     end
     al.backup if options[:backup]
     al.list   if options[:list]
-    al.show(aliasString) if options[:show]
+    if options[:show]
+      if aliasString == nil
+        fatal("Needs an alias string to show the related command!")
+        exit 64
+      end
+    end
     
     if options[:delete]
       al.empty
     elsif options[:add]
+      if aliasString == nil || value == nil
+        fatal("Both an alias and a value are required!")
+        exit 64
+      end
       al.add(aliasString,value)
     elsif options[:remove]
+      if aliasString == nil 
+        fatal("Alias is required for the remove operation!")
+        exit 64
+      end 
       al.remove(aliasString)
     end
   end

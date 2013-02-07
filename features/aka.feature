@@ -20,5 +20,5 @@ Feature: Help method is complete
       |-s       |
       |--show   |
     Then the banner should document that this app's arguments are:
-    |alias|
-    |value|
+    |alias|which is optional|
+    |value|which is optional|
