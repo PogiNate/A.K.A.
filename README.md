@@ -22,7 +22,7 @@ Or install it yourself as:
 2. run `aka -a hi "echo Hi There!"`
 3. type `source ~/.alias` to reload the aliases in your current session (or restart your session)
 4. type `hi`
-    1. Enjoy having your command line say `hi there back to you`
+    1. Enjoy having your command line say `hi there` back to you
 5. run `aka -h` to see a full list of features.
 
 ## Contributing
