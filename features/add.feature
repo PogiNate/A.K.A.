@@ -4,4 +4,8 @@ Feature: Adding a new alias
 
     Scenario: Short Form
         When I run `aka -a second "echo second"`
-        Then the alias 'second="echo second"' should be in the alias file.
+        Then the alias "second" should be in the alias file.
+
+    Scenario: Long Form
+        When I run `aka -add third "echo third"`
+        Then the alias "third" should be in the alias file.

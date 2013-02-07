@@ -4,7 +4,6 @@ Feature: Aliases are listed
     So I can confidently use them.
 
 
-    #TODO: Create a mock file in the fake test directory that has some good fake aliases to test.
     Scenario: Use Short Code
         When I run `aka -l`
         Then the exit status should be 0

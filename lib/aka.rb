@@ -52,7 +52,7 @@ module Aka
     end
 
     def backup
-        FileUtils.copy(@fileName,"#{fileName}.bak",true)
+        FileUtils.copy(@fileName,"#{@fileName}.bak")
     end
 
     def writeOut

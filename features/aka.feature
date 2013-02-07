@@ -19,6 +19,10 @@ Feature: Help method is complete
       |--remove |
       |-s       |
       |--show   |
+      |-b       |
+      |--backup |
+      |-d       |
+      |--delete |
     Then the banner should document that this app's arguments are:
     |alias|which is optional|
     |value|which is optional|

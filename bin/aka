@@ -22,6 +22,7 @@ class App
         fatal("Needs an alias string to show the related command!")
         exit 64
       end
+      al.show aliasString
     end
     
     if options[:delete]
