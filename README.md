@@ -4,17 +4,7 @@ AKA is an alias manager. keep tabs on all of your alias'ed commands, shortcuts, 
 
 ## Installation
 
-For now (meaning, until I get this into [RubyGems]) use these steps
-
-    $ cd /path/to/aka 
-
-Then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install /path/to/aka
+    $ gem install aka
 
 ## Usage
 
