@@ -47,6 +47,7 @@ module Aka
 
     def empty
         #empty out the file.
+        backup          # So we don't have deleter's remorse.
         @aliases = {}
         writeOut
     end
