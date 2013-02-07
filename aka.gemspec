@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["nate@natedickson.com"]
   gem.description   = %q{Manage your aliases with style}
   gem.summary       = %q{Manages your list of aliases from an easy and friendly command line interface.}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/PogiNate/A.K.A."
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

@@ -1,23 +1,30 @@
-= aka - DESCRIBE YOUR GEM
+= aka - Manage your Aliases with style.
 
-Author::  YOUR NAME (YOUR EMAIL)
-Copyright:: Copyright (c) 2013 YOUR NAME
+Author::  Nate Dickson (nate at natedickson dot com)
+Copyright:: Copyright (c) 2013 Nate Dickson
 
 
 License:: mit, see LICENSE.txt
 
+aka lets you store all of your unix-style aliases in a single file. 
 
+Add <code>source ~/.alias</code> to your profile.
 
-DESCRIBE YOUR GEM HERE
 
 == Links
 
-* {Source on Github}[LINK TO GITHUB]
+* {https://github.com/PogiNate/A.K.A.}[LINK TO GITHUB]
 * RDoc[LINK TO RDOC.INFO]
 
 == Install
 
+<code>gem install aka</code>
+
 == Examples
+
+* To add a new alias enter <code>aka -n hi "echo "hi there!"</code>
+* enter <code>aka -h</code> to see the other available commands.
 
 == Contributing
 
+I welcome pull requests and errors on GitHub. 
