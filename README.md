@@ -4,22 +4,30 @@ AKA is an alias manager. keep tabs on all of your alias'ed commands, shortcuts, 
 
 ## Installation
 
-Add this line to your application's Gemfile:
+For now (meaning, until I get this into [RubyGems]) use these steps
 
-    gem 'aka'
+    $ cd /path/to/aka 
 
-And then execute:
+Then execute:
 
     $ bundle
 
 Or install it yourself as:
 
-    $ gem install aka
+    $ gem install /path/to/aka
 
 ## Usage
 
-TODO: Write usage instructions here
+1. add the line `source ~/.alias` to your `.bash_profile` or `.profile` or `.bashrc`… basically whatever profile file you use on your system.
+2. run `aka -a hi "echo Hi There!"`
+3. type `source ~/.alias` to reload the aliases in your current session (or restart your session)
+4. type `hi`
+    1. Enjoy having your command line say `hi there back to you`
+5. run `aka -h` to see a full list of features.
 
 ## Contributing
 
-I am certainly **not** suggesting that this is a perfect app. It's basically something that works for me and I kind of like it. Pull requests are definitely welcome, as are any issues, with our without proposed fixes.
+Pull requests and issues are very welcome. If you have time, please include a solution or a test with any issues you submit.
+
+
+[RubyGems]:https://rubygems.org/
