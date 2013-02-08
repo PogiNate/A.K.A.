@@ -26,7 +26,7 @@ Or you can use `aka`.
 
 ## Usage
 
-1. add the line `source ~/.alias` to your `.bash_profile` or `.profile` or `.bashrc`… basically whatever profile file you use on your system.
+1. add the line `source ~/.alias` to your `.bash_profile` or `.profile` or `.zshrc`… basically whatever profile file you use on your system.
 2. run `aka -a hi "echo Hi There!"`
 3. type `source ~/.alias` to reload the aliases in your current session (or restart your session)
 4. type `hi`
@@ -40,6 +40,14 @@ Pull requests and issues are very welcome. If you have time, please include a so
 ##Acknowledgements
 
 Many, many thanks go to [David Copeland] for the [Methadone] framework that made this app possible and [his book][awesomeApps] which made it easy.
+
+## Roadmap
+
+I really like this app, but I've got other things I want to work on. But there are a few features I'm still planning to add:
+
+1. Support for a config file that will let you use a file other than `~/.alias` for your aliases
+1. Grouping aliases
+    1. Aliases sorted alphabetically by default.
 
 
 [David Copeland]:http://www.naildrivin5.com/
