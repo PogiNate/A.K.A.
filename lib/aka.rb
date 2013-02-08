@@ -10,6 +10,9 @@ module Aka
         @aliasPattern = /alias (\S+)="(.+)"/
         @aliases = {}
         @fileName = "#{ENV["HOME"]}/.alias"
+        if !File.exists? @fileName
+            FileUtils.touch @fileName
+        end
         debug ("made it to the class. filenName is #{@fileName}, aliasPattern is #{@aliasPattern}.")      
         #Open the alias list
         File.foreach(@fileName) do |line|
