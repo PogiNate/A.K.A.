@@ -13,7 +13,7 @@ Add <code>source ~/.alias</code> to your profile.
 
 == Links
 
-* {https://github.com/PogiNate/A.K.A.}[LINK TO GITHUB]
+* {http://poginate.github.com/A.K.A./}[LINK TO GITHUB]
 * RDoc[LINK TO RDOC.INFO]
 
 == Install
@@ -22,7 +22,7 @@ Add <code>source ~/.alias</code> to your profile.
 
 == Examples
 
-* To add a new alias enter <code>aka -n hi "echo "hi there!"</code>
+* To add a new alias enter <code>aka -a hi "echo "hi there!"</code>
 * enter <code>aka -h</code> to see the other available commands.
 
 == Contributing
