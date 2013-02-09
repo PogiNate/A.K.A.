@@ -6,24 +6,31 @@ Copyright:: Copyright (c) 2013 Nate Dickson
 
 License:: mit, see LICENSE.txt
 
-aka lets you store all of your unix-style aliases in a single file. 
+aka lets you store all of your unix-style aliases in a single file.
 
-Add <code>source ~/.alias</code> to your profile.
+To use this app follow these steps: 
+
+* Add +source ~/.alias+ to your profile.
+* Install the app using +gem install aka+
+* A good first alias to add is +aka -a reload "source ~/.alias"+
+* Once you've added that you'll have to either start a new session or manually run +source ~/.alias"
+* From here on out, whenever you add a new alias, you can just type +reload+ and it'll be available immediately!
+* Check out all the other available commands by running +aka -h+
 
 
 == Links
 
-* {http://poginate.github.com/A.K.A./}[LINK TO GITHUB]
-* RDoc[LINK TO RDOC.INFO]
+* {View the source on github}[http://poginate.github.com/A.K.A./]
+
 
 == Install
 
-<code>gem install aka</code>
++gem install aka+
 
 == Examples
 
-* To add a new alias enter <code>aka -a hi "echo "hi there!"</code>
-* enter <code>aka -h</code> to see the other available commands.
+* To add a new alias enter +aka -a hi "echo "hi there!"+
+* enter +aka -h+ to see the other available commands.
 
 == Contributing
 
