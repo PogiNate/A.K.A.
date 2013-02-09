@@ -15,8 +15,9 @@ class App
     options.each do |key, value|
       debug("#{key} : #{value}")
     end
-    al.backup if options[:backup]
-    al.list   if options[:list]
+    al.backup  if options[:backup]
+    al.list    if options[:list]
+    al.showAll if options[:L]
     if options[:show]
       if aliasString == nil
         fatal("Needs an alias string to show the related command!")
@@ -48,12 +49,13 @@ class App
 
   description "Manage your aliases without editing dot files."
 
-  on("-a", "--add",    "Add a new alias")
-  on("-l", "--list",   "List all current aliases")
-  on("-r", "--remove", "Remove the specified alias")
-  on("-s", "--show",   "Show what the specified alias does")
-  on("-b", "--backup", "Create a backup copy of your alias file")
-  on("-d", "--delete", "Delete all keys from your alias file")
+  on("-a", "--add",     "Add a new alias")
+  on("-l", "--list",    "List all current aliases")
+  on("-r", "--remove",  "Remove the specified alias")
+  on("-s", "--show",    "Show what the specified alias does")
+  on("-b", "--backup",  "Create a backup copy of your alias file")
+  on("-d", "--delete",  "Delete all keys from your alias file")
+  on("-L", "--list-all","Display all aliases and their associated commands.")
 
   arg :alias, :optional
   arg :value, :optional

@@ -31,25 +31,27 @@ module Aka
     end
 
     def remove string
-         #remove the alias from the list.
          @aliases.delete string
          writeOut
     end 
 
     def list
-        #return the list of aliases.
         keyList = ""
         @aliases.keys.each{|key| keyList = keyList+" #{key}" }
         info(keyList)
     end
 
+    def showAll
+        keyList = ""
+        @aliases.each{|key, value| keyList = keyList + "#{key}: #{value}\n"}
+        info keyList
+    end
+
     def show string
-        #return the command of a single alias.
         info(@aliases[string])
     end
 
     def empty
-        #empty out the file.
         backup          # So we don't have deleter's remorse.
         @aliases = {}
         writeOut
@@ -61,11 +63,8 @@ module Aka
 
     def writeOut
         filestring = ""
-        @aliases.each { |key, value| filestring = filestring + "alias #{key}=\"#{value}\"\n" }
-        
+        @aliases.sort.each { |key, value| filestring = filestring + "alias #{key}=\"#{value}\"\n" }
         File.open(@fileName, "w") { |file| file.write filestring  }
-
-        #write out the list. This will be called after any method that changes something.
     end
   end
 end

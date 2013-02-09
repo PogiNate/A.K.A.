@@ -33,6 +33,9 @@ Or you can use `aka`.
     1. Enjoy having your command line say `hi there` back to you
 5. run `aka -h` to see a full list of features.
 
+
+**Quick note:** Mostly for my own peace of mind, running `aka -d` creates a backup copy of your alias file as `.alias.bak` before cleaning out your current alias file. So if you really want to get rid of any sign of your aliases you'll need to manually delete that file as well. 
+
 ## Contributing
 
 Pull requests and issues are very welcome. If you have time, please include a solution or a test with any issues you submit.
