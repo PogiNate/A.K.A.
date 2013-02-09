@@ -28,11 +28,13 @@ module Aka
         #add a new alias to the list
         @aliases[string] = command
         writeOut
+        info "#{string} added to your alias list."
     end
 
     def remove string
          @aliases.delete string
          writeOut
+         info "#{string} removed from your alias list."
     end 
 
     def list
@@ -52,13 +54,27 @@ module Aka
     end
 
     def empty
-        backup          # So we don't have deleter's remorse.
-        @aliases = {}
-        writeOut
+        info "Would you like to create a backup before deleting? (y/n/a)"
+        backConfirm = gets.chomp.downcase
+        if backConfirm.start_with? "y"
+            backup
+            @aliases = {}
+            writeOut
+            info "Alias list deleted."
+        elsif backConfirm.start_with? "a"
+            info "Alias list deletion aborted."
+        elsif backConfirm.start_with? "n"
+           @aliases = {}
+           writeOut
+           info "Alias list deleted."
+        else
+            info "I didn't understand your response; so your file was not deleted."
+        end
     end
 
     def backup
         FileUtils.copy(@fileName,"#{@fileName}.bak")
+        info "Backup created as #{@fileName}.bak"
     end
 
     def writeOut
