@@ -3,4 +3,4 @@ results.html
 pkg
 html
 .idea
-.gem
+*.gem
