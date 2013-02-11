@@ -50,7 +50,7 @@ I really like this app, but I've got other things I want to work on. But there a
 
 1. Support for a config file that will let you use a file other than `~/.alias` for your aliases
 1. Grouping aliases
-    1. Aliases sorted alphabetically by default.
+    1. Aliases sorted alphabetically by default. -**DONE!**
 
 
 [David Copeland]:http://www.naildrivin5.com/
