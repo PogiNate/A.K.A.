@@ -1,0 +1,22 @@
+#A sample document to be used in testing
+
+## Directory Aliases ##
+alias sand="cd ~/Projects/sandbox"
+
+## Git Aliases ## 
+alias gaa="git add ."
+alias gb="git branch"
+alias gca="git commit -a"
+alias gcb="git checkout -b"
+alias gco="git checkout"
+alias gf="git fetch"
+alias gp="git pull"
+alias gs="git status"
+
+## Listing Aliases ## 
+alias la="ls -a"
+alias ll="ls -l"
+
+## Misc Aliases
+alias quit="exit"
+alias s="subl ."
