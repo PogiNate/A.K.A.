@@ -4,11 +4,13 @@ Feature: Use an alternate alias file
     So that I can be large and in charge.
 
     Scenario: Create a new alias file
-        When I run `aka --new-file .shortcuts`
+        When I run `aka --alias-file .shortcuts` interactively
+        And I type "y\n"
         Then a file named "/tmp/akaTest/.shortcuts" should exist
-        And that file should have all my current shortcuts in it
+        And the file "/tmp/akaTest/.shortcuts" should contain "alias test" 
 
     Scenario: Check for a configuration file
-        When I run `aka --new-file .newcuts`
+        When I run `aka --alias-file .newcuts` interactively
+        And I type "y\n"
         Then a file named "/tmp/akaText/.aka" should exist
-        And it should contain the text ".newcuts"
+        And the file "/tmp/akaText/.aka" should contain ".newcuts"

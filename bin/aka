@@ -4,6 +4,7 @@ require 'optparse'
 require 'methadone'
 require 'aka'
 require 'fileutils'
+require 'yaml'
 
 class App
   include Methadone::Main
@@ -11,10 +12,11 @@ class App
   include Aka
 
   main do |aliasString,value|
-    al = AliasList.new
-    options.each do |key, value|
-      debug("#{key} : #{value}")
-    end
+    
+    al = AliasList.new options["alias-file"]
+    #options.each do |key, value|
+    #  debug("#{key} : #{value}")
+    #end
     al.backup  if options[:backup]
     al.list    if options[:list]
     al.showAll if options[:L]
@@ -44,7 +46,7 @@ class App
   end
 
   # supplemental methods here
-
+  
   # Declare command-line interface here
 
   description "Manage your aliases without editing dot files."
@@ -55,7 +57,10 @@ class App
   on("-s", "--show",    "Show what the specified alias does")
   on("-b", "--backup",  "Create a backup copy of your alias file")
   on("-d", "--delete",  "Delete all keys from your alias file")
-  on("-L", "--list-all","Display all aliases and their associated commands.")
+  on("-L", "--list-all","Display all aliases and commands.")
+  on("--alias-file FILENAME","Create and use a new alias file.")
+
+  defaults_from_config_file '.aka'
 
   arg :alias, :optional
   arg :value, :optional

@@ -1,20 +1,32 @@
 require "aka/version"
 require "fileutils"
 require "methadone"
+require "yaml"
 module Aka
 
   class AliasList
     include Methadone::CLILogging
 
-    def initialize  
+    def initialize  aliasFile = nil
         @aliasPattern = /alias (\S+)="(.+)"/
         @aliases = {}
-        @fileName = "#{ENV["HOME"]}/.alias"
+        @defaults_file = "#{ENV["HOME"]}/.aka"
+        @defaults = get_defaults_from_file
+        debug "Alias file is #{aliasFile}"
+        if aliasFile
+            @fileName = "#{ENV["HOME"]}/#{aliasFile}"
+            if change_defaults "alias-file", aliasFile
+                new_alias_file aliasFile
+            end
+        else
+            @fileName = "#{ENV["HOME"]}/.alias"
+        end
+        debug "The File we're looking at is #{@fileName}"
         if !File.exists? @fileName
             FileUtils.touch @fileName
         end
-        debug ("made it to the class. filenName is #{@fileName}, aliasPattern is #{@aliasPattern}.")      
-        #Open the alias list
+        debug ("made it to the class. fileName is #{@fileName}, aliasPattern is #{@aliasPattern}.")
+
         File.foreach(@fileName) do |line|
             @aliasPattern.match(line)do |match|
                 #read them all into an array
@@ -81,6 +93,42 @@ module Aka
         filestring = ""
         @aliases.sort.each { |key, value| filestring = filestring + "alias #{key}=\"#{value}\"\n" }
         File.open(@fileName, "w") { |file| file.write filestring  }
+    end
+
+    def new_alias_file fileName
+        info "Copy current aliases into the new file?(Yna)"
+        copy = gets.chomp.downcase
+
+        if copy == "n"
+            FileUtils.touch(fileName)
+            @fileName = fileName
+        elsif copy == "a"
+            "creation of new aliases aborted!"
+        else
+            FileUtils.copy(@fileName,fileName)
+            @fileName = fileName
+        end
+    end
+
+    def get_defaults_from_file
+        if File.exists? @defaults_file
+            YAML::load(File.read(@defaults_file))
+        else
+            {}
+        end
+    end
+
+    def change_defaults name, value
+      debug "name: #{name}, value: #{value} defaults: #{@defaults.to_s}"
+      if @defaults[name] == nil ||@defaults[name] != value
+            @defaults[name] = value
+            File.open(@defaultsFile,"w"){|file| file.write defaults.to_yaml}
+            info "Changed the default for #{name} to #{value}"
+            true
+        else
+           debug "No changes required!"
+           false
+        end        
     end
   end
 end
