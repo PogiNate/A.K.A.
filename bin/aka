@@ -60,7 +60,7 @@ class App
   on("-d", "--delete",  "Delete all keys from your alias file")
   on("-L", "--list-all","Display all aliases and commands.")
   on("--alias-file FILENAME","Create and use a new alias file.")
-  on("-D NEW", "Create a random default value for testing purposes.")
+  #on("-D NEW", "Create a random default value for testing purposes.")
 
   defaults_from_config_file '.aka'
 
