@@ -7,16 +7,17 @@ module Aka
   class AliasList
     include Methadone::CLILogging
 
-    def initialize  aliasFile = nil
+    def initialize  incoming_alias_file = nil
         @aliasPattern = /alias (\S+)="(.+)"/
         @aliases = {}
         @defaults_file = "#{ENV["HOME"]}/.aka"
         @defaults = get_defaults_from_file
-        debug "Alias file is #{aliasFile}"
-        if aliasFile
-            @fileName = "#{ENV["HOME"]}/#{aliasFile}"
-            if change_defaults "alias-file", aliasFile
-                new_alias_file aliasFile
+        debug "Incoming Alias file is #{incoming_alias_file}"
+        if incoming_alias_file
+            @fileName = "#{ENV["HOME"]}/#{incoming_alias_file}"
+            if incoming_alias_file != @defaults['alias-file'] 
+                change_alias_file incoming_alias_file
+                change_defaults "alias-file", incoming_alias_file
             end
         else
             @fileName = "#{ENV["HOME"]}/.alias"
@@ -95,18 +96,20 @@ module Aka
         File.open(@fileName, "w") { |file| file.write filestring  }
     end
 
-    def new_alias_file fileName
+    def change_alias_file new_file_name
+        new_file_name = "#{ENV['HOME']}/#{new_file_name}"
         info "Copy current aliases into the new file?(Yna)"
         copy = gets.chomp.downcase
 
         if copy == "n"
-            FileUtils.touch(fileName)
-            @fileName = fileName
+            FileUtils.touch(new_file_name)
+            @fileName = new_file_name
         elsif copy == "a"
             "creation of new aliases aborted!"
         else
-            FileUtils.copy(@fileName,fileName)
-            @fileName = fileName
+            debug "Copying aliases from #{@defaults['alias-file']} to #{new_file_name}"
+            FileUtils.copy("#{ENV['HOME']}/#{@defaults['alias-file']}",new_file_name)
+            @fileName = new_file_name
         end
     end
 
@@ -114,15 +117,14 @@ module Aka
         if File.exists? @defaults_file
             YAML::load(File.read(@defaults_file))
         else
-            {}
+            {'alias-file'=>".alias"}
         end
     end
 
     def change_defaults name, value
-      debug "name: #{name}, value: #{value} defaults: #{@defaults.to_s}"
-      if @defaults[name] == nil ||@defaults[name] != value
+        if @defaults[name] == nil ||@defaults[name] != value
             @defaults[name] = value
-            File.open(@defaultsFile,"w"){|file| file.write defaults.to_yaml}
+            File.open(@defaults_file,"w"){|file| file.write @defaults.to_yaml}
             info "Changed the default for #{name} to #{value}"
             true
         else

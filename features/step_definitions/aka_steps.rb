@@ -17,3 +17,7 @@ Then /^the alias "(.*?)" should no longer be in the alias file\.$/ do |arg1|
     worked = false if line.start_with? "alias #{arg1}"
   end 
 end
+
+When /^I close the stdin stream$/ do
+    @interactive.stdin.close()
+end

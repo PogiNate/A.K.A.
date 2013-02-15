@@ -20,6 +20,7 @@ class App
     al.backup  if options[:backup]
     al.list    if options[:list]
     al.showAll if options[:L]
+    al.change_defaults 'random', options[:D] if options[:D]
     if options[:show]
       if aliasString == nil
         fatal("Needs an alias string to show the related command!")
@@ -59,6 +60,7 @@ class App
   on("-d", "--delete",  "Delete all keys from your alias file")
   on("-L", "--list-all","Display all aliases and commands.")
   on("--alias-file FILENAME","Create and use a new alias file.")
+  on("-D NEW", "Create a random default value for testing purposes.")
 
   defaults_from_config_file '.aka'
 
