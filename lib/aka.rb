@@ -57,8 +57,14 @@ module Aka
     end
 
     def showAll
+        # A whole bunch of rigamarole to make all the line items the same width.
+        length = 0
+        @aliases.keys.each do |k|
+            length = k.length if k.length > length
+        end
+        length = (length + 1)* -1
         keyList = ""
-        @aliases.each{|key, value| keyList = keyList + "#{key}: #{value}\n"}
+        @aliases.each{|key, value| keyList = keyList + sprintf("%1$*2$s: %3$s\n",key, length, value)}
         info keyList
     end
 
