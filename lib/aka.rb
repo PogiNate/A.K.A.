@@ -62,8 +62,9 @@ module Aka
         @aliases.keys.each do |k|
             length = k.length if k.length > length
         end
-        length = (length + 1)* -1
-        keyList = ""
+        eq_string = "=" * (length + 7) #7 is the length of the string ": Value"
+        length = length * -1
+        keyList = sprintf("\n\n%1$*2$s: %3$s\n%4$s\n","Alias",length,"Value",eq_string)
         @aliases.each{|key, value| keyList = keyList + sprintf("%1$*2$s: %3$s\n",key, length, value)}
         info keyList
     end
